@@ -1,14 +1,17 @@
 const canvas = document.querySelector("#canvas");
 const ctx = canvas.getContext("2d");
 
-canvas.width = 500;
-canvas.height = 700;
+// canvas.width = 500;
+// canvas.height = 700;
 
-const background = new Image();
-background.src = "./images/road.png";
+const roadBackground = new Image();
+roadBackground.src = "./images/road.png";
 
-background.onload = function () {
-  ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
+// const carIcon = new Image();
+// carIcon.src = "./images/car.png";
+
+roadBackground.onload = function () {
+  ctx.drawImage(roadBackground, 0, 0, canvas.width, canvas.height);
 };
 
 window.onload = () => {
@@ -17,6 +20,30 @@ window.onload = () => {
   };
 
   function startGame() {
-    ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
+    ctx.drawImage(roadBackground, 0, 0, canvas.width, canvas.height);
   }
+
+  class Car {
+    constructor(imag, x, y, w, h) {
+      this.x = x;
+      this.y = y;
+      this.w = w;
+      this.h = h;
+      this.img = img;
+    }
+
+    draw = () => {
+      ctx.drawImage(this.img, this.x, this.y, this.w, this.h);
+    };
+  }
+
+  let img = new Image();
+  img.src = "./images/car.png";
+  let carIcon = new Car(
+    img,
+    0,
+    0,
+    canvas.width / 2 - 50,
+    canvas.height / 2 - 50
+  );
 };
